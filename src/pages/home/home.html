@@ -1,14 +1,35 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Casas en renta y venta
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 *ngFor="let casa of casas">
+        <ion-card>
+          <img *ngIf="casa.pictures[0].hasOwnProperty('url')" src ='{{casa.pictures[0].url}}'>
+          <ion-card-content>
+            <h3>
+              DESDE
+            </h3> 
+            <h1 *ngIf="casa.price.hasOwnProperty('formattedAmount')">
+              {{casa.price.formattedAmount}}
+            </h1>
+            <h3>
+              EN: 
+            </h3>
+            <h2 *ngIf="casa.geo.hasOwnProperty('displayName')">
+              <h1 *ngIf="casa.geo.hasOwnProperty('name')">
+                  {{casa.geo.displayName}}, {{casa.geo.name}}
+              </h1>
+            </h2>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
